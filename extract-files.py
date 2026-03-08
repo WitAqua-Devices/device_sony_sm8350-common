@@ -65,24 +65,8 @@ lib_fixups: lib_fixups_user_type = {
 
 blob_fixups: blob_fixups_user_type = {
     (
-        'system_ext/bin/wfdservice',
-    ): blob_fixup()
-        .add_needed('libwfdservice_shim.so'),
-    (
-        'system_ext/lib/libwfdmmsrc_system.so',
-    ): blob_fixup()
-        .add_needed('libgui_shim.so'),
-    (
-        'system_ext/lib/libwfdservice.so',
-    ): blob_fixup()
-        .replace_needed('android.media.audio.common.types-V3-cpp.so', 'android.media.audio.common.types-V4-cpp.so'),
-    (
-        'system_ext/lib64/libwfdnative.so',
-    ): blob_fixup()
-        .replace_needed('android.hidl.base@1.0.so', 'libhidlbase.so')
-        .add_needed('libbinder_shim.so')
-        .add_needed('libinput_shim.so'),
-    (
+        'vendor/bin/hw/vendor.semc.hardware.extlight-service.somc',
+        'vendor/lib64/libcammw.so',
         'vendor/lib64/vendor.semc.hardware.extlight-V1-ndk_platform.so',
     ): blob_fixup()
         .replace_needed('android.hardware.light-V1-ndk_platform.so', 'android.hardware.light-V1-ndk.so'),
@@ -112,6 +96,21 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libwvhidl.so',
     ): blob_fixup()
         .add_needed('libcrypto_shim.so'),
+    (
+        'vendor/lib64/libsomc_camerahal.so',
+        'vendor/lib64/libsomc_chokoballpal.so',
+    ): blob_fixup()
+        .replace_needed('libui.so', 'libui-v34.so'),
+    (
+        'system_ext/lib64/libwfdnative.so',
+    ): blob_fixup()
+        .add_needed('libinput_shim.so'),
+    (
+        'vendor/lib64/libdpps.so',
+        'vendor/lib64/liblearningmodule.so',
+        'vendor/lib64/libsnapdragoncolor-manager.so',
+    ): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

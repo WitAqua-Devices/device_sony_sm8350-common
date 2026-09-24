@@ -129,7 +129,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl \
     android.hardware.audio.service \
-    android.hardware.bluetooth.audio@2.1-impl \
+    android.hardware.bluetooth.audio-impl \
     android.hardware.soundtrigger@2.3-impl \
     tinyplay \
     tinymix \
@@ -398,6 +398,8 @@ PRODUCT_PACKAGES += \
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator-sony.service.cs40l25
+
+$(call soong_config_set_bool,SonyVibratorVars,use_compound_double_click_effect,true)
 
 # WiFi
 PRODUCT_PACKAGES += \
